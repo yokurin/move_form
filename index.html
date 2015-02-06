@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <style type="text/css">
+  <!--
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #888;
+    color: #888;
+    width: 100%;
+    /*overflow: hidden;*/
+  }
+  #container{
+    background-color: #888;
+  }
+
+  #question{
+    list-style: none;
+    margin: 30% 0 0 0;
+    padding: 0;
+  }
+  .question_single{
+    width: 40%;
+    margin: 20% auto;
+  }
+  .question-box{
+    background-color: #888;
+    border: none;
+    display: block;
+    font-size: 20px;
+    height: 40px;
+    width: 90%;
+  }
+
+
+  -->
+  </style>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+
+      //---------------         Q2へスクロールstart           -----------------------
+
+      //enterkey をおされたときの処理
+      $('#name').keypress( function ( e ) {
+        if ( e.which == 13 ) {
+          //Q2へスクロール
+          $("html,body").animate({ scrollTop: $('#q2_container').offset().top }, 'slow');
+          return false;
+        }
+      } );
+      //Q2へスクロール
+      $("q1_next_button").click(function(){
+        $("html,body").animate({ scrollTop: $('#q2_container').offset().top }, 'slow');
+      });
+      //---------------         Q2へスクロールend           -----------------------
+    });
+
+    $(function(){
+      var elements = "input[type=text]";
+      $(elements).keypress(function(e) {
+        var c = e.which ? e.which : e.keyCode;
+        if (c == 13) {
+          var index = $(elements).index(this);
+          $(elements + ":gt(" + index + "):first").focus();
+          e.preventDefault();
+        }
+      });
+
+      
+
+    });
+
+
+  </script>
+
+</head>
+<body>
+
+  <div id="container">
+    <ul id="question">
+
+      <li id="q1" class="question_single">
+        <p>Q1:名前は？</p>
+        <input type="text" name="name" id="name" class="question-box" autofocus>
+        <button id="q1_next_button">次へ</button>
+      </li>
+
+
+      <li id="q2" class="question_single">
+        <p>Q2:性別は？</p>
+        <input type="text" name="sex" id="sex" class="question-box">
+        <button id="q2_next_button">次へ</button>
+      </li>
+
+      <li id="q3" class="question_single">
+        <p>Q3:出身はどこ？</p>
+        <input type="text" name="location" id="location" class="question-box">
+        <button id="q3_next_button">次へ</button>
+      </li>
+
+      <li id="q4" class="question_single">
+        <p>Q4:生年月日は？</p>
+        <input type="text" name="birth" id="birth" class="question-box">
+        <button id="q4_next_button">次へ</button>
+      </li>
+
+      <li id="q5" class="question_single">
+        <p>Q5:好きなのはどっち？</p>
+        <input type="text" name="whichlike" id="whichlike" class="question-box">
+        <button id="q5_next_button">次へ</button>
+      </li>
+
+      <li id="q6" class="question_single">
+        <p>Q6:自分をいい人と悪い人どっちだと思う？</p>
+        <input type="text" name="goodbad" id="goodbad" class="question-box">
+        <button id="q6_next_button">次へ</button>
+      </li>
+
+      <li id="q7" class="question_single">
+        <p>Q7:家族は何人いる？</p>
+        <input type="text" name="family" id="family" class="question-box">
+        <button id="q7_next_button">次へ</button>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>
