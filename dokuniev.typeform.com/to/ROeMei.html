@@ -1,0 +1,544 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"Vg8GWVBXGwUCXFdRBwY="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:21,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:21,2:22,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:22,2:21,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:22,2:21,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:22,2:21,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:22,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.licenseKey&&t.applicationID&&f&&f.body){s(h,function(e,n){e in t||(t[e]=n)}),l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=f.createElement("script");e.src=l.proto+t.agent,f.body.appendChild(e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document,u="addEventListener",d="attachEvent",p=(""+location).split("?")[0],h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-515.min.js"},l=e.exports={offset:i(),origin:p,features:{}};f[u]?(f[u]("DOMContentLoaded",o,!1),c[u]("load",n,!1)):(f[d]("onreadystatechange",r),c[d]("onload",n)),a("mark",["firstbyte",i()])},{1:20,handle:"D5DuLP"}],20:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],21:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],22:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:21,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<link id="font" href='https://fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic&text=' rel='stylesheet' type='text/css'>	<script type="text/template" id="stripe-field-description">
+	<div class="stripe-description">
+		<p><%=price%></p>
+		<p><%=advice%></p>
+		<a href="http://www.stripe.com" target="_blank" class="stripe-logo">
+			<%=stripeBanner%>
+		</a>
+	</div>
+</script>
+<script type="text/template" id="stripe-logo">
+	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 width="81.216px" height="33.225px" viewBox="0 0 81.216 33.225" enable-background="new 0 0 81.216 33.225" xml:space="preserve">
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M39.262,26.75h6.475V8.69h-6.475V26.75z M0,14.244c0,3.306,2.181,4.533,3.715,5.248l0.818,0.375
+					c1.056,0.478,1.533,0.785,1.533,1.466c0,0.884-0.75,1.021-1.738,1.021c-0.886,0-2.896-0.477-4.056-0.783v4.668
+					c1.33,0.408,3.306,0.852,5.18,0.852c2.896,0,6.952-0.682,6.952-6.132c0-3.408-2.215-4.566-3.817-5.282l-0.681-0.307
+					c-1.125-0.512-1.602-0.75-1.602-1.466c0-0.681,0.579-0.886,1.363-0.886c1.158,0,3.101,0.409,4.055,0.716V9.201
+					C10.905,8.895,9.337,8.35,6.952,8.35C3.783,8.35,0,9.405,0,14.244 M32.82,10.428l-0.954-1.738H26.72V26.75h6.475v-12.37
+					c0.341-0.204,1.125-0.613,2.147-0.613c0.886,0,1.738,0.17,2.385,0.341V8.724c-0.307-0.17-0.988-0.374-2.011-0.374
+					C34.217,8.35,33.195,9.304,32.82,10.428 M54.939,22.387v-8.722c0.408-0.238,1.158-0.545,1.533-0.545
+					c1.057,0,1.363,0.442,1.363,4.498c0,3.986-0.682,4.941-1.805,4.941C55.791,22.559,55.246,22.491,54.939,22.387 M54.667,9.814
+					l-0.955-1.125h-5.248v24.536h6.475v-6.51c0.613,0.137,1.465,0.375,2.283,0.375c2.385,0,7.088-0.135,7.088-9.472
+					c0-8.52-3.135-9.269-5.793-9.269C57.052,8.35,55.656,8.929,54.667,9.814 M73.992,12.2c1.191,0,1.191,1.737,1.191,4.157h-2.725
+					C72.525,14.21,72.355,12.2,73.992,12.2 M66.017,17.789c0,8.655,4.941,9.301,8.996,9.301c2.25,0,4.533-0.646,5.283-0.92v-4.703
+					c-0.955,0.169-3.443,0.716-5.283,0.716c-1.602,0-2.555-0.375-2.555-2.317h8.758v-2.146c0-7.225-3.033-9.371-7.225-9.371
+					C69.902,8.35,66.017,10.155,66.017,17.789 M16.291,4.601l-0.818,4.089h-2.385v4.124h2.385v9.064c0,5.01,3.442,5.213,5.283,5.213
+					c1.431,0,3.612-0.34,4.6-0.578v-4.602c-0.477,0.068-1.908,0.273-2.317,0.273c-0.716,0-1.091-0.238-1.091-1.464v-7.906h2.556
+					l0.852-4.124h-3.408V3.237L16.291,4.601z M39.296,3.237c0,1.772,1.397,3.237,3.203,3.237c1.807,0,3.203-1.465,3.203-3.237
+					C45.702,1.466,44.306,0,42.5,0C40.693,0,39.296,1.466,39.296,3.237"/>
+			</defs>
+			<use xlink:href="#SVGID_1_"  overflow="visible"/>
+		</g>
+	</svg>
+</script>
+<script type="text/template" id="stripe-logo-fallback">
+<b>Stripe</b>
+</script>
+
+		<title>check_test</title>
+
+
+			<link rel="stylesheet" type="text/css" href="ROeMei.css">
+
+
+
+		<script type="text/template" id="component-opinion-scale">
+<div class="component-choices"></div>
+<ul class="labels layout-thee-columns layout-columns color-secondary text-subpixel-antialiased">
+	<li class="first text-size-m text-align-left negativeLabel"></li>
+	<li class="second text-size-m text-align-center neutralLabel"></li>
+	<li class="third text-size-m text-align-right positiveLabel"></li>
+</ul>
+</script>
+<script type="text/template" id="component-choice-simple">
+	<input <%=checked%> type="radio" value="<%=value%>"/><br/>
+	<span><%=label%></span>
+</script>
+<script type="text/template" id="component-choice-square">
+	<div class="choice-wrapper">
+		<div class="label"><%=label%></div>
+		<div class="line"></div>
+		<div class="aux">
+			<div class="inset"></div>
+			<div class="bg"></div>
+			<div class="bd"></div>
+			<img class="light" src="https://s3-eu-west-1.amazonaws.com/typeform-media-static/container-gradient.png">
+			<img class="dark" src="https://s3-eu-west-1.amazonaws.com/typeform-media-static/container-gradient-dark.png">
+			<div class="overlay"></div>
+		</div>
+		<div class="background"></div>
+	</div>
+</script>
+<script type="text/template" id="icon-cloud">
+	<svg class="icon-cloud" width="132px" height="85px" viewBox="0 0 132 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+		<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+			<g id="Artboard-3" sketch:type="MSArtboardGroup" fill="#000000">
+				<path d="M79,85 L108,85 L108,84.9566146 C121.385069,84.1801879 132,73.0797189 132,59.5 C132,46.906961 122.871557,36.445984 110.870729,34.373127 C110.956288,33.426871 111,32.4685402 111,31.5 C111,14.1030304 96.8969696,0 79.5,0 C65.9387999,0 54.3791415,8.56961829 49.9409394,20.5889401 L49.9409394,20.5889401 C47.0317445,16.5954404 42.3189711,14 37,14 C28.163444,14 21,21.163444 21,30 C21,31.4892152 21.2034561,32.9309107 21.5840885,34.2988067 C9.35984257,36.1828033 0,46.7483475 0,59.5 C0,73.4162144 11.1475089,84.7287886 25,85 L59,85 L59,66 L43,66 L69,32 L95,66 L79,66 L79,85 Z" id="Oval-6" sketch:type="MSShapeGroup"></path>
+			</g>
+		</g>
+	</svg>
+</script>
+<script type="text/template" id="icon-file">
+	<svg class="icon-file" version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="85px" viewBox="0 0 65 85" enable-background="new 0 0 65 85" xml:space="preserve">
+		<g id="Page-1" sketch:type="MSPage">
+			<g id="Artboard-1" transform="translate(97.000000, 0.000000)" sketch:type="MSArtboardGroup">
+				<g id="Rectangle-4-_x2B_-Line-_x2B_-Line" transform="translate(3.000000, 1.000000)" sketch:type="MSLayerGroup">
+					<path id="Rectangle-4" sketch:type="MSShapeGroup" fill="none" stroke="#000000" stroke-width="3" d="M-55.333,1
+						c0.457,0-42,0-42,0v79h61V18C-36.333,18-54.876,1-55.333,1z"/>
+					<path id="Line" sketch:type="MSShapeGroup" fill="none" stroke="#000000" stroke-width="2.837" stroke-linecap="square" d="
+						M-55.833,1.579V18.5"/>
+					<path id="Line_1_" sketch:type="MSShapeGroup" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="square" d="
+						M-55.333,18.5h19"/>
+				</g>
+			</g>
+		</g>
+	</svg>
+</script>
+<script type="text/template" id="component-file-upload-box">
+	<div class="box">
+		<div class="box-cancel">
+			<svg viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px" width="14px" height="14px">
+				<g>
+					<path id="Line" d="M 11.5 1.5 L 1.5 11.5 " stroke="#000000" stroke-width="2" fill="none"/>
+					<path id="Line2" d="M 1.5 1.5 L 11.5 11.5 " stroke="#000000" stroke-width="2" fill="none"/>
+				</g>
+			</svg>
+			<div class="cancel-background"></div>
+		</div>
+		<span class="tick"></span>
+		<input type="file" name="file"/>
+		<div class="box-content-wrapper">
+			<div class="box-content">
+				<div class="box-image"></div>
+				<div class="box-text"></div>
+			</div>
+		</div>
+		<div class="aux">
+			<div class="inset"></div>
+			<div class="bg"></div>
+			<div class="bd"></div>
+			<img class="light" src="https://s3-eu-west-1.amazonaws.com/typeform-media-static/container-gradient.png">
+			<img class="dark" src="https://s3-eu-west-1.amazonaws.com/typeform-media-static/container-gradient-dark.png">
+			<div class="overlay"></div>
+		</div>
+		<div class="background"></div>
+	</div>
+</script>
+<script type="text/template" id="component-file-upload-box-simple">
+	<input type="file" name="file"/>
+	<p class="box-text"></p>
+    <div class="progress-bar-target"></div>
+</script>
+<script type="text/template" id="component-file-upload-progress-bar">
+	<div class="progress-bar">
+		<div class="bar"></div>
+	</div>
+</script>
+<script type="text/template" id="component-file-upload-text-start">
+	<p>
+		<%= textChoose %>
+	</p>
+	<p>
+		<%= textSizeLimit %>: <%= maxFileSize %> MB
+	</p>
+</script>
+<script type="text/template" id="component-file-upload-text-uploading">
+	<p>
+		<b><%= textUploading %></b>
+	</p>
+	<p>
+		<%= fileName %>
+	</p>
+</script>
+<script type="text/template" id="component-file-upload-text-preview">
+	<p>
+		<b><%= fileName %></b>
+	</p>
+</script>
+<script type="text/template" id="component-confirm-button">
+	<div class="button-wrapper confirm">
+	</div>
+	<div class="text"></div>
+	<div class="aux no-hover">
+		<div class="inset"></div>
+		<div class="bg"></div>
+		<div class="bd"></div>
+		<img class="light" src="https://s3-eu-west-1.amazonaws.com/typeform-media-static/container-gradient.png"/>
+		<img class="dark" src="https://s3-eu-west-1.amazonaws.com/typeform-media-static/container-gradient-dark.png"/>
+		<div class="overlay"></div>
+	</div>
+</script>
+
+	</head>
+	<body class="preload  fallback  repeat proportion branding ">
+
+    <div id="typeform">
+	<div id="89579" class="intro screen">
+	<div class="content-wrapper">
+		<div class="content">
+
+
+
+
+
+
+			<div class="text">
+														ようこそ！
+
+			</div>
+
+
+
+
+
+
+										<a href="ROeMei.html#" class="button intro-intro">スタート</a>
+
+
+					</div>
+	</div>
+	<div class="footer">
+		<div class="persistent-wrapper">
+			<div class="persistent background"></div>
+			<div class="persistent"></div>
+		</div>
+		<div class="overlay"></div>
+		<div class="content">
+			<div class="button-wrapper">
+																</div>
+		</div>
+		<div class="scroll-smooth"></div>
+	</div>
+</div>
+	<form action="./" class="form" method="post">
+		<div id="form" class="questions fontFamily">
+
+<div class="row field dropdown active   " id="1308025" data-model='{"id":1308025,"type":"dropdown","name":"","required":false}'>
+	<span class="focus"><span class="arrow">&nbsp;</span></span>
+	<div class="label">
+		<span class="prefix"></span>
+		<span class="question">
+		あなたは以下の中の色で何色が一番すきですか
+				</span>
+	</div><br/>
+	<div class="widget">
+
+
+	<select id="form-dropdown:1308025" name="form[dropdown:1308025]" class="dropdown">
+		<option value="">選択してください</option>
+					<option value="あか">あか</option>
+					<option value="きいろ">きいろ</option>
+					<option value="あお">あお</option>
+					<option value="くろ">くろ</option>
+					<option value="しろ">しろ</option>
+					<option value="むらさき">むらさき</option>
+					<option value="ぴんく">ぴんく</option>
+					<option value="そのほか">そのほか</option>
+			</select>
+	</div>
+	<div class="clear"></div>
+	<div class="error-message"></div>
+</div>
+
+<div class="row field yes-no active   " id="4277891" data-model='{"id":4277891,"type":"yes-no","name":"","required":false}'>
+	<span class="focus"><span class="arrow">&nbsp;</span></span>
+	<div class="label">
+		<span class="prefix"></span>
+		<span class="question">
+		男性ですか
+				</span>
+	</div><br/>
+	<div class="widget">
+
+
+	<div class="choice">
+		<input type="radio" class="radio yes" id="form_yes-no:4277891_1" name="form[yes-no:4277891]" value="1">&nbsp;<label for="form_yes-no:4277891_1">はい</label>&nbsp;&nbsp;
+		<input type="radio" class="radio no" id="form_yes-no:4277891_0" name="form[yes-no:4277891]" value="0">&nbsp;<label for="form_yes-no:4277891_0">いいえ</label>
+	</div>
+	</div>
+	<div class="clear"></div>
+	<div class="error-message"></div>
+</div>
+
+<div class="row field email active   " id="4277915" data-model='{"id":4277915,"type":"email","name":"","required":false}'>
+	<span class="focus"><span class="arrow">&nbsp;</span></span>
+	<div class="label">
+		<span class="prefix"></span>
+		<span class="question">
+		E-mailadreeをおしえてください
+				</span>
+	</div><br/>
+	<div class="widget">
+
+
+	<input class="input" type="text"/>
+	</div>
+	<div class="clear"></div>
+	<div class="error-message"></div>
+</div>
+
+<div class="row field dropdown active   " id="4277919" data-model='{"id":4277919,"type":"dropdown","name":"","required":false}'>
+	<span class="focus"><span class="arrow">&nbsp;</span></span>
+	<div class="label">
+		<span class="prefix"></span>
+		<span class="question">
+		出身は？
+				</span>
+	</div><br/>
+	<div class="widget">
+
+
+	<select id="form-dropdown:4277919" name="form[dropdown:4277919]" class="dropdown">
+		<option value="">選択してください</option>
+					<option value="東京都">東京都</option>
+					<option value="神奈川">神奈川</option>
+					<option value="千葉県">千葉県</option>
+					<option value="茨城県">茨城県</option>
+					<option value="埼玉県">埼玉県</option>
+					<option value="栃木県">栃木県</option>
+					<option value="群馬県">群馬県</option>
+					<option value="山梨県">山梨県</option>
+			</select>
+	</div>
+	<div class="clear"></div>
+	<div class="error-message"></div>
+</div>
+						<div class="clear"></div>
+			<div id="footer" class="last row footer-fallback">
+    <span class="footer-message"></span>
+		<div class="button-wrapper submit">
+	</div>
+        <div class="button-wrapper review">
+        <button id="review-form" class="button">
+            <span class="text">レビュー</span>
+            <span class="dots">...</span>
+        </button>
+    </div>
+
+    </div>
+		</div>
+	</form>
+		<div id="0" class="outro default screen">
+	<div class="content-wrapper">
+		<div class="content">
+
+
+
+
+			<div class="text">
+
+			</div>
+
+
+
+
+
+
+
+
+												<div class="credits">
+												Create awesome forms & surveys with <a  href="http://www.typeform.com/?utm_campaign=typeform_ROeMei&utm_source=typeform.com&utm_medium=typeform&utm_content=typeform-thankyou&utm_term=JP" target="_blank">Typeform</a>
+					</div>
+									</div>
+	</div>
+	<div class="footer">
+		<div class="persistent-wrapper">
+			<div class="persistent background"></div>
+			<div class="persistent"></div>
+		</div>
+		<div class="overlay"></div>
+		<div class="content">
+			<div class="button-wrapper">
+							</div>
+		</div>
+		<div class="scroll-smooth"></div>
+	</div>
+</div>
+
+	<div id="background">
+	<div></div>
+</div>
+</div>
+
+<ul id="texts" style="display:none;">
+		<li id="keyboard">keyboard</li>
+		<li id="key">キー</li>
+		<li id="tab-button">OK</li>
+		<li id="continue-button">続ける</li>
+		<li id="button-tip-default"><strong>ENTER</strong> を押す</li>
+		<li id="button-tip-multiple">button-tip-multiple</li>
+		<li id="button-tip-textarea"><strong>SHIFT</strong> + <strong>ENTER</strong> を押す</li>
+		<li id="review-button">レビュー</li>
+		<li id="next-validation">次回の確認</li>
+		<li id="submit-button">送信</li>
+		<li id="phishing-notice">決してパスワードは送信しない</li>
+		<li id="report-phishing">悪用の報告</li>
+		<li id="report-phishing-link">http://helpcenter.typeform.com/hc/en-us/articles/201749796-Report-Abuse</li>
+		<li id="multiple">複数選択可</li>
+		<li id="other">その他</li>
+		<li id="resizing">resizing</li>
+		<li id="private">This form is in private mode. Please do not share this url.</li>
+		<li id="private-embed">This form is in private mode.</li>
+		<li id="preview">preview</li>
+		<li id="end">end</li>
+		<li id="incomplete">必須項目が未入力です</li>
+		<li id="default-text">ここに答えが出ます</li>
+		<li id="share">ここをチェック！</li>
+		<li id="y">O</li>
+		<li id="yes">はい</li>
+		<li id="n">X</li>
+		<li id="no">いいえ</li>
+		<li id="success">完了です！貴方の情報は正しく送られました</li>
+		<li id="image-placeholder-1">Upload your logo or an image / video</li>
+		<li id="image-placeholder-2">We’ll take care of the rest!</li>
+		<li id="placeholder-description">Description text goes here...</li>
+		<li id="progress-proportion">{{step}}/{{total}}回答済み</li>
+		<li id="progress-percent">{{percent}}% 完了です</li>
+		<li id="meta-description">この調査はTypeformを使用しています。見た目に美しい、クロスプラットフォームのオンラインフォームとアンケートが簡単に作成できる無料オンラインアンケートツールです。今すぐ登録してお試しください!</li>
+		<li id="advert-footer">Powered by <b>Typeform</b></li>
+		<li id="advert-footer-core">自分の<b>Typeform</b>を作成</li>
+		<li id="advert-thankyou">Create awesome forms & surveys with <a  href="http://www.typeform.com/?%7B%7BQUERY%7D%7D" target="_blank">Typeform</a></li>
+		<li id="legalyes">了承します</li>
+		<li id="legalno">了承しません</li>
+		<li id="type-select">タイプまたはリストから選択してください</li>
+		<li id="type-select-touch">オプションを選択</li>
+		<li id="not-found">該当するアイテムは見つかりませんでした</li>
+		<li id="banner-text">聞き上手, スゴイ質問</li>
+		<li id="banner-link"><b>Typeform</b> を構築</li>
+		<li id="banner-link-core">自分の<b>Typeform</b>を無料で作成</li>
+		<li id="payment_description_price">クレジットカード会社に請求が行われます: <%=price%></li>
+		<li id="payment_description_advice">クレジットカード番号やカード確認コードを一切保管いたしません!</li>
+		<li id="payment_description_stripe"><%=logo%><span>運営の決済サービス</span></li>
+		<li id="credit_card_number">クレジットカード番号を入力してください:</li>
+		<li id="cvc_number">カード確認コード:</li>
+		<li id="cvc_description">(クレジットカードの裏に記載されている3桁か4桁のセキュリティ番号)</li>
+		<li id="credit_card_name">クレジットカード名義人:</li>
+		<li id="expiry_month">カード有効期限（月）:</li>
+		<li id="expiry_year">カード有効期限（年）:</li>
+		<li id="credit_card_number_error">credit_card_number_error</li>
+		<li id="credit_card_cvc_error">credit_card_cvc_error</li>
+		<li id="file-upload-choose"><b>ファイルを選択</b></li>
+		<li id="file-upload-drag">または<b>こちらにドラッグ</b></li>
+		<li id="file-upload-uploading">アップロード中…</li>
+		<li id="file-upload-sizeLimit">ファイルが大きすぎます</li>
+		<li id="file-upload-maxSize">サイズ制限</li>
+		<li id="file-upload-processing">ファイルは現在アップロード中です。しばらくお待ちください…</li>
+		<li id="file-upload-upload-error">ファイルのアップロード中にエラーが発生しました</li>
+		<li id="file-upload-must-upload"><b>申し訳ありません!</b> ファイルをアップロードする必要があります</li>
+		<li id="shortcut">shortcut</li>
+		<li id="legalquestion">legalquestion</li>
+		<li id="yesnoanswer">yesnoanswer</li>
+		<li id="proportional">proportional</li>
+		<li id="correct">次のエラーを修正してください</li>
+		<li id="required">ここを記入してください</li>
+		<li id="duplicated">この数値は他の人によってすでに入力されています</li>
+		<li id="invalid"><strong>注意！</strong> この数値は有効ではありません</li>
+		<li id="must-select">選択してください</li>
+		<li id="must-enter">数値を入力してください</li>
+		<li id="maxlength">{{MAXLENGTH}} 以下の文字数を入力してください</li>
+		<li id="terms">契約条件に同意する必要があります</li>
+		<li id="email">そのeメールは有効ではありません</li>
+		<li id="website">そのウェブアドレスは存在しません</li>
+		<li id="minmax">{{MIN}} ～ {{MAX}} までの数値を入力してください</li>
+		<li id="min">{{MIN}} を超える数値を入力してください</li>
+		<li id="max">{{MAX}} 未満の数値を入力してください</li>
+		<li id="review">{{NUM}} 欄の答えが不完全です</li>
+		<li id="connection">ただ今サーバーに接続されていないようです</li>
+		<li id="server">サーバーエラー！あなたのリクエストは処理されませんでした</li>
+		<li id="form-down">Typeform {{NAME}} は現在使用できません。もう少したってから再度トライしてください</li>
+		<li id="form-empty">全く内容がまだありません！</li>
+		<li id="fallback-alert">このTypeformが"Simple"モードで見えますね。<br/>あなたのデバイスがまだTypeformプラットフォームにサポートされていないからです。</li>
+		<li id="incorrect_number">カード番号が正しくありません。</li>
+		<li id="invalid_number">カード番号が有効なクレジットカード番号ではありません。</li>
+		<li id="invalid_cvc">カードのセキュリティコードが有効ではありません。</li>
+		<li id="invalid_name">クレジットカードに記載されている名前を入力する必要があります</li>
+		<li id="invalid_expiry_month">カードの有効期限の月が有効ではありません。</li>
+		<li id="invalid_expiry_year">カードの有効期限の年が有効ではありません。</li>
+		<li id="expired_card">カードの有効期限が切れています。</li>
+		<li id="incorrect_cvc">カードのセキュリティコードが正しくありません。</li>
+		<li id="card_declined">カードが拒否されました。</li>
+		<li id="processing_error">カードの処理の際にエラーが発生しました。</li>
+		<li id="payment_sync">価格計算が有効ではありません。もう一度お試し下さい</li>
+		<li id="generic-error">エラーが発生しました。</li>
+		<li id="and">して</li>
+		<li id="pay">{{amount}}支払う</li>
+	</ul>
+
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js"></script>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="/bundles/quickyformcommon/js/jquery-1.10.2.min.js">\x3C/script>')</script>
+
+
+
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script>window.Stripe || document.write('<script src="/bundles/quickyformapp/js/lib/stripe.js">\x3C/script>')</script>
+
+
+
+		<!-- end of common scripts -->
+
+		<script type="text/javascript">
+			var jumps = [];
+			var serializedForm = {"fields":[{"id":1308025,"question":"\u3042\u306a\u305f\u306f\u4ee5\u4e0b\u306e\u4e2d\u306e\u8272\u3067\u4f55\u8272\u304c\u4e00\u756a\u3059\u304d\u3067\u3059\u304b","choices":["\u3042\u304b","\u304d\u3044\u308d","\u3042\u304a","\u304f\u308d","\u3057\u308d","\u3080\u3089\u3055\u304d","\u3074\u3093\u304f","\u305d\u306e\u307b\u304b"],"alphabetical":false,"calculations":[],"options":"\u3042\u304b\r\n\u304d\u3044\u308d\r\n\u3042\u304a\r\n\u304f\u308d\r\n\u3057\u308d\r\n\u3080\u3089\u3055\u304d\r\n\u3074\u3093\u304f\r\n\u305d\u306e\u307b\u304b","required":false,"label":"\u3042\u306a\u305f\u306f\u4ee5\u4e0b\u306e\u4e2d\u306e\u8272\u3067\u4f55\u8272\u304c\u4e00\u756a\u3059\u304d\u3067\u3059\u304b","type":"dropdown","position":0},{"id":4277891,"question":"\u7537\u6027\u3067\u3059\u304b","position":1,"calculations":[],"type":"yes-no","label":"\u7537\u6027\u3067\u3059\u304b","required":false},{"id":4277915,"question":"E-mailadree\u3092\u304a\u3057\u3048\u3066\u304f\u3060\u3055\u3044","calculations":[],"position":2,"type":"email","label":"E-mailadree\u3092\u304a\u3057\u3048\u3066\u304f\u3060\u3055\u3044","required":false},{"id":4277919,"question":"\u51fa\u8eab\u306f\uff1f","choices":["\u6771\u4eac\u90fd","\u795e\u5948\u5ddd","\u5343\u8449\u770c","\u8328\u57ce\u770c","\u57fc\u7389\u770c","\u6803\u6728\u770c","\u7fa4\u99ac\u770c","\u5c71\u68a8\u770c"],"alphabetical":false,"calculations":[],"options":"\u6771\u4eac\u90fd\r\n\u795e\u5948\u5ddd\r\n\u5343\u8449\u770c\r\n\u8328\u57ce\u770c\r\n\u57fc\u7389\u770c\r\n\u6803\u6728\u770c\r\n\u7fa4\u99ac\u770c\r\n\u5c71\u68a8\u770c","required":false,"label":"\u51fa\u8eab\u306f\uff1f","type":"dropdown","position":3}],"id":127375,"uid":"ROeMei","name":"check_test"};
+			freezeframe_options = {
+				animation_icon_image: false,
+				loading_background_image: false,
+				loading_background_color: "transparent",
+				loading_background_position: "top left",
+				trigger_event: "focus",
+                loading_fade_in_speed: 1,
+				auto_run: false
+			}
+		</script>
+
+
+
+		<script type="text/javascript" src="https://d4z6dx8qrln4r.cloudfront.net/fallback-54d8bb0351d50-min.js"></script>
+
+
+
+		<script type="text/javascript">
+
+	var settings = {
+	browser : "fallback",
+	token: "2c238b50b7f1515250e6d43760cea7f5",
+	uid : "ROeMei",
+	language: "jp",
+	submitPath: "/app/form/submit/ROeMei",
+	uniquePath: "/app/form/field/unique/",
+	uploadPath: "/app/form/field/uploadCredentials/",
+	signupPath: "//admin.typeform.com/signup",
+	lessPath: "/bundles/quickyformapp/css/",
+	parent: "",
+	hiddenFieldsEnabled: false,
+	hiddenFields: [],
+	font:'Cabin:400,700,400italic,700italic',
+	showLogo: '1',
+	createdAt: '2014-07-17T02:55:06+0000',
+	stripePublishableKey: '',
+	showLoadingBranding: false,
+    colors: {
+        primary: '#FFFFFF'
+    }
+};
+
+
+				</script>
+
+
+	<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-6.newrelic.com","licenseKey":"aa6e0ec721","applicationID":"6286307","transactionName":"NVEDZkUEXEQEBkANWQwbIFFDDF1ZSjRBDVUJTSddRQhzRxUnQQpSDlFbdlIWW1ALX0EWWg==","queueTime":0,"applicationTime":840,"atts":"GRYAEA0eT0o=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-515.min.js"}</script></body>
+</html>
