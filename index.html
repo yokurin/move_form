@@ -5,131 +5,97 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <style type="text/css">
-  <!--
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #888;
-    color: #888;
-    width: 100%;
-    /*overflow: hidden;*/
-  }
-  #container{
-    background-color: #888;
-  }
-
-  #question{
-    list-style: none;
-    margin: 30% 0 0 0;
-    padding: 0;
-  }
-  .question_single{
-    width: 40%;
-    margin: 20% auto;
-  }
-  .question-box{
-    background-color: #888;
-    border: none;
-    display: block;
-    font-size: 20px;
-    height: 40px;
-    width: 90%;
-  }
-
-
-  -->
-  </style>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(function(){
-
-      //---------------         Q2へスクロールstart           -----------------------
-
-      //enterkey をおされたときの処理
-      $('#name').keypress( function ( e ) {
-        if ( e.which == 13 ) {
-          //Q2へスクロール
-          $("html,body").animate({ scrollTop: $('#q2_container').offset().top }, 'slow');
-          return false;
-        }
-      } );
-      //Q2へスクロール
-      $("q1_next_button").click(function(){
-        $("html,body").animate({ scrollTop: $('#q2_container').offset().top }, 'slow');
-      });
-      //---------------         Q2へスクロールend           -----------------------
-    });
-
-    $(function(){
-      var elements = "input[type=text]";
-      $(elements).keypress(function(e) {
-        var c = e.which ? e.which : e.keyCode;
-        if (c == 13) {
-          var index = $(elements).index(this);
-          $(elements + ":gt(" + index + "):first").focus();
-          e.preventDefault();
-        }
-      });
-
-
-
-    });
-
-
-  </script>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  <!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script-->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
 </head>
 <body>
 
-  <div id="container">
-    <ul id="question">
+  <form method="post" action="">
+    <div id="container">
+      <div id="question">
 
-      <li id="q1" class="question_single">
-        <p>Q1:名前は？</p>
-        <input type="text" name="name" id="name" class="question-box" autofocus>
-        <button id="q1_next_button">次へ</button>
-      </li>
+        <div id="q1" class="form-group">
+          <label for="name">Q1:名前は？</label>
+          <input type="text" name="name" id="name" class="form-control" autofocus><br />
+          <button id="q1_next_button" type="button" class="btn btn-default btn-large">
+            次へ
+            <span class="icon icon-ok"></span>
+          </button>
+        </div>
+
+        <div id="q2" class="form-group">
+          <label for="name">Q2:性別は？</label>
+          <input type="text" name="sex" id="sex" class="form-control"><br />
+          <button id="q2_next_button" type="button" class="btn btn-default btn-large">
+            次へ
+            <span class="icon icon-ok"></span>
+          </button>
+        </div>
 
 
-      <li id="q2" class="question_single">
-        <p>Q2:性別は？</p>
-        <input type="text" name="sex" id="sex" class="question-box">
-        <button id="q2_next_button">次へ</button>
-      </li>
+        <div id="q3" class="form-group">
+          <label for="name">Q3:出身はどこ？</label>
+          <input type="text" name="pref" id="pref" class="form-control"><br />
+          <button id="q3_next_button" type="button" class="btn btn-default btn-large">
+            次へ
+            <span class="icon icon-ok"></span>
+          </button>
+        </div>
 
-      <li id="q3" class="question_single">
-        <p>Q3:出身はどこ？</p>
-        <input type="text" name="location" id="location" class="question-box">
-        <button id="q3_next_button">次へ</button>
-      </li>
+        <div id="q4" class="form-group">
+          <label for="name">Q4:生年月日は？</label>
+          <input type="text" name="birth" id="birth" class="form-control"><br />
+          <button id="q4_next_button" type="button" class="btn btn-default btn-large">
+            次へ
+            <span class="icon icon-ok"></span>
+          </button>
+        </div>
 
-      <li id="q4" class="question_single">
-        <p>Q4:生年月日は？</p>
-        <input type="text" name="birth" id="birth" class="question-box">
-        <button id="q4_next_button">次へ</button>
-      </li>
+        <div id="q5" class="form-group">
+          <label for="name">Q5:好きなたべものは？</label>
+          <input type="text" name="food" id="food" class="form-control"><br />
+          <button id="q5_next_button" type="button" class="btn btn-default btn-large">
+            次へ
+            <span class="icon icon-ok"></span>
+          </button>
+        </div>
 
-      <li id="q5" class="question_single">
-        <p>Q5:好きなのはどっち？</p>
-        <input type="text" name="whichlike" id="whichlike" class="question-box">
-        <button id="q5_next_button">次へ</button>
-      </li>
+        <div id="q6" class="form-group">
+          <label for="name">Q6:自分をいい人と悪い人どっちだと思う？</label>
+          <input type="text" name="goodbad" id="goodbad" class="form-control"><br />
+          <button id="q6_next_button" type="button" class="btn btn-default btn-large">
+            次へ
+            <span class="icon icon-ok"></span>
+          </button>
+        </div>
 
-      <li id="q6" class="question_single">
-        <p>Q6:自分をいい人と悪い人どっちだと思う？</p>
-        <input type="text" name="goodbad" id="goodbad" class="question-box">
-        <button id="q6_next_button">次へ</button>
-      </li>
 
-      <li id="q7" class="question_single">
-        <p>Q7:家族は何人いる？</p>
-        <input type="text" name="family" id="family" class="question-box">
-        <button id="q7_next_button">次へ</button>
-      </li>
-    </ul>
-  </div>
+        <div id="q7" class="form-group">
+          <label for="name">Q7:家族は何人いる？</label>
+          <input type="text" name="family" id="family" class="form-control"><br />
+          <button id="q7_next_button" type="button" class="btn btn-default btn-large">
+            次へ
+            <span class="icon icon-ok"></span>
+          </button>
+        </div>
+
+        <div id="confirm" class="form-group">
+          <label for="name">以上でおわり！</label><br />
+          <button id="q7_next_button" type="button" class="btn btn-info btn-large">
+            POST
+            <!--span class="icon icon-saved"></span-->
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </form>
 
 </body>
 </html>

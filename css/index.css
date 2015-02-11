@@ -1,0 +1,31 @@
+body {
+  margin-top: 5%;
+  padding: 0;
+  /*background-color: #888;
+  color: #888;
+  width: 100%;
+  overflow: hidden;*/
+}
+
+#container{
+  /*background-color: #888;*/
+}
+
+#question{
+  list-style: none;
+  margin-top: 5%;
+  padding: 0;
+}
+.form-group{
+  width: 25%;
+  margin: 10% auto;
+  display: none;
+}
+.form-control{
+  background-color: #888;
+  border: none;
+  display: block;
+  font-size: 20px;
+  height: 40px;
+  width: 70%;
+}
