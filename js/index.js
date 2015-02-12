@@ -3,6 +3,8 @@ $(function(){
   $("#q1").animate( { opacity: 'show',}, { duration: 1500, easing: 'swing', } );
 
 
+  //メソッドnext parent
+
   //---------------         Q1からQ2へスクロールstart           -----------------------
 
   //enterkey をおされたときの処理
