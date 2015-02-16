@@ -1,9 +1,17 @@
 $(function(){
 
   $("#q1").animate( { opacity: 'show',}, { duration: 1500, easing: 'swing', } );
-
-
+  //get window height
+  var windowHeight = $(window).height();
+  var halfWindowHeight = windowHeight / 2;
+  var marginTop = halfWindowHeight - $('#name').height();
+  $('#container').css('margin-top', marginTop+'px');
+  $('.form-group').css('margin-top', halfWindowHeight+'px');
+  $('#question').css('margin-bottom', halfWindowHeight+'px');
   //メソッドnext parent
+  //apacityにアニメーションはいらない、くらすでopacityを措定
+  //スクロールがおわったらクラスをつける
+  //$('#sample').scrollTo({left:'+=100', top:'-=100'}, 'normal');
 
   //---------------         Q1からQ2へスクロールstart           -----------------------
 
@@ -14,7 +22,6 @@ $(function(){
       $("#q2").animate( { opacity: 'show',}, { duration: 1500, easing: 'swing', } );
       //Q2へスクロール
       $("html,body").animate({ scrollTop: $('#q2').offset().top }, 'slow', 'swing', function(){
-        //$("#q2").animate( { opacity: 'show',}, { duration: 1500, easing: 'swing', } )
         //Q2にフォーカスをあてる
         $("input[type=text]#sex").focus();
       });

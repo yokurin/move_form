@@ -13,12 +13,12 @@ body {
 
 #question{
   list-style: none;
-  margin-top: 5%;
   padding: 0;
 }
 .form-group{
-  width: 25%;
-  margin: 10% auto;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
   display: none;
 }
 .form-control{
@@ -27,5 +27,5 @@ body {
   display: block;
   font-size: 20px;
   height: 40px;
-  width: 70%;
+  width: 100%;
 }
