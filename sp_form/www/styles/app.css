@@ -24,24 +24,27 @@ body{
 		background: #fff;
 		border: 1px solid #c8c8c8;
 		border-radius: 10px;
-		width:75%;
-		font-size: 11px;
-		padding:3%;
+		width: 50%;
+		font-size: 15px;
+		padding:1%;
 }
 
 
 
 
 .arrow_question {
-		float: right;
+		float: left;
 }
-
+.arrow_answer {
+		float: right;
+		margin-right: 2%;
+}
 
 .arrow_answer:after,
 .arrow_answer:before,
 .arrow_question:after,
 .arrow_question:before {
-		top: 30%;
+		top: 45%;
 		border: solid transparent;
 		content: " ";
 		height: 0;
@@ -128,3 +131,13 @@ body{
 }
 
 /*  ---------    line風css コピペ   ここまで-----------------*/
+.input-text-box{
+	bottom: 0;
+	position: fixed;
+	display: inline;
+}
+
+.input-text-box input{
+	display: inline;
+	width: 90%;
+}

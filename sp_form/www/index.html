@@ -28,11 +28,11 @@
   <ons-sliding-menu var="app.menu" main-page="page.html" menu-page="menu.html" max-slide-distance="200px" type="reveal" side="left">
 </ons-sliding-menu>
 -->
-
+<!--
   <ons-tabbar>
     <!--                   activeで最初に表示されるページを指定-->
     <!-- タブバー型をやめるときはons-templateを外せばOK -->
-    <ons-tab page="home.html" active="true">
+    <!--ons-tab page="home.html" active="true">
       <ons-icon icon="ion-home"></ons-icon>
       <span style="font-size: 14px">Home</span>
     </ons-tab>
@@ -48,11 +48,11 @@
     </ons-tab>
 
   </ons-tabbar>
+-->
 
 
 
-
-  <ons-template id="home.html">
+  <!--ons-template id="home.html"-->
     <ons-navigator>
       <ons-page>
         <ons-toolbar>
@@ -66,7 +66,7 @@
         </div>
       </ons-page>
     </ons-navigator>
-  </ons-template>
+  <!--/ons-template-->
 
 
 
@@ -82,38 +82,39 @@
 
       <div id="wrapper">
 
-        <div class="question_Box">
-          <div class="question_image"><img src="img/me.gif" alt="質問者の写真"/></div>
-          <div class="arrow_question">
-            質問テキスト質問テキスト質問テキスト質問テキスト質問テキスト質問テキスト
-          </div><!-- /.arrow_question -->
+        <div ng-repeat="item in items"><!--repeat-->
 
-        </div><!-- /.question_Box -->
+          <div class="question_Box">
+            <div class="question_image"><img src="img/me.gif" alt="質問者の写真"/></div>
+            <div class="arrow_question">
+              {{item.question}}
+            </div><!-- /.arrow_question -->
+
+          </div><!-- /.question_Box -->
 
 
+          <div class="question_Box" style="display: ;">
+            <div class="answer_image"><img src="img/you.jpeg" alt="解答者の写真" /></div>
+            <div class="arrow_answer">
+              {{item.answer}}
+              <!--{{inputText}}-->
+            </div><!-- /.arrow_answer -->
 
+          </div><!-- /.question_Box -->
 
-        <div class="question_Box">
-          <div class="answer_image"><img src="img/you.jpeg" alt="解答者の写真" /></div>
-          <div class="arrow_answer">
-            解答テキスト解答テキスト解答テキスト解答テキスト解答テキスト解答テキスト
-          </div><!-- /.arrow_answer -->
+        </div><!--repeat-->
 
-        </div><!-- /.question_Box -->
       </div><!-- /#wrapper -->
 
-      <!--div id="question">
+      <!--  入力ボックス  -->
+      <center style="width: 100%; bottom: 15px; position: fixed;">
+        <input style="width:90%;" type="text" class="text-input" placeholder="例：ああああああ" name="inputText" ng-model="inputText">
+        <button class="button button--outline" ng-click="postText(0)">次へ{{num}}</button>
+      </center>
 
-        <section style="float: left;">
-          <span for="name">Q1:名前は？</span>
-        </section>
 
-        <section style="bottom: 0;">
-          <input type="text" class="text-input text-input--transparent" style="width:100%; margin-top:4px;" name="name" id="name" placeholder="name">
-          <ons-button class="button button--outline" value="送信" ng-click=""></ons-button>
-        </section>
 
-      </div-->
+
     </ons-page>
   </ons-template>
 
