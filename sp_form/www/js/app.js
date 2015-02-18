@@ -20,6 +20,7 @@
     }
     */
 
+
     //formに遷移
     $scope.go_to_form = function() {
       $scope.ons.navigator.pushPage('form.html');//, {title : selectedItem.title});
@@ -49,23 +50,37 @@
         }*/
     ];
 
-    $data.num = 0;
+    $scope.num = 0;
 
 
+    var update = function(index) {
+      $('#answer'+index).css('display','');
+    };
 
-    $scope.postText = function(num)
+
+    $scope.postText = function(index)
     {
+      var questionValue = [];
+      questionValue[0] = '名前は？';
+      questionValue[1] = '性別は？';
+      questionValue[2] = '出身は？';
+      questionValue[3] = 'アホなの？';
+      questionValue[4] = '頭いいの？';
+      questionValue[5] = 'エロいの？';
+
       if(this.inputText)
       {
         //get input box value
         var textValue = this.inputText;
         console.log("入力内容:"+ textValue);
 
-        $('question_Box').css('display','block');
+        //$("#answer"+index).css("backgroundColor","red");
 
-        $scope.items[num] = ({ question: '名前は？' , answer: this.inputText });
+        //番号に応じた質問と答えをセット
+        $scope.items[index] = ({ question: questionValue[index], answer: this.inputText });
+        $scope.items.push({ question: questionValue[index+1] });
 
-        $scope.items.push({ question: '性別は？' });
+
         $scope.inputText = "";　//ボックスのクリア
         $scope.$apply();   //画面の更新
       }else{
