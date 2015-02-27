@@ -30,7 +30,7 @@
   });
 
 
-  module.controller('FormController', function($scope, $data, $location) {
+  module.controller('FormController', function($scope, $data, $location, $anchorScroll) {
 
     //itemsにプロパティを追加
     $scope.items = [ { question: 'お名前を教えてください' } ];
@@ -80,12 +80,14 @@
 
         //新しい質問部分に移動
         var nextQuesLocation = 'question' + next;
-        //$location.absUrl() == "file:///Users/hayashi/Documents/develop/move_form/sp_form/www/index.html#"+nextQuesLocation
-        //$location.path() == '/'+ nextQuesLocation
+        $location.url("#"+nextQuesLocation,null);
 
-        $location.path(nextQuesLocation);
-        
-
+        //$location.path(nextQuesLocation);
+        //$location.hash(nextQuesLocation);
+        //$anchorScroll.yOffset = 100;
+        //var locUrl = "file:///Users/hayashi/Documents/develop/move_form/sp_form/www/index.html#"+nextQuesLocation;
+        //$location.absUrl() == locUrl
+        //$location.path() == nextQuesLocation
         /*
         if($location.hash() != nextQuesLocation)
         {
