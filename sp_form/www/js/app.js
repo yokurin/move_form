@@ -32,7 +32,7 @@
 
   module.controller('FormController', function($scope, $data, $location, $anchorScroll) {
 
-    //itemsにプロパティを追加
+    //add items propaty（これを行わないと動かない）
     $scope.items = [ { question: 'お名前を教えてください' } ];
 
     //$scope.num = 0;
@@ -48,7 +48,17 @@
       if ( e.which == 13 ) {
         $scope.postText();
       }
-    });*/
+    });
+    function pushEnterKey()
+    {
+      if(event.keyCode == 13)
+      {
+        $scope.postText;
+      }
+    }
+
+    window.document.onkeydown = pushEnterKey;
+    */
 
 
     $scope.postText = function(index)
@@ -60,7 +70,12 @@
       questionValue[2] = '出身を教えてください';
       questionValue[3] = '年齢を教えてください';
       questionValue[4] = '住所を教えてください';
-      questionValue[5] = 'あああを教えてください';
+      //questionValue[5] = '質問６';
+      //questionValue[6] = '質問７';
+      for(var o=5; o<100; o++) //oはループ変数
+      {
+        questionValue[o] = '質問'+o+'の内容';
+      }
 
       if(this.inputText)
       {
@@ -74,13 +89,14 @@
         //$("#answer"+index).addClass("displayon");
 
         //番号に応じた質問と答えをセット
-        $scope.items[index] = ({ question: questionValue[index], answer: this.inputText });
+        $scope.items[index] = ({ question: questionValue[index], answer: textValue });
         $scope.items.push({ question: questionValue[next] });
 
 
         //新しい質問部分に移動
         var nextQuesLocation = 'question' + next;
-        $location.url("#"+nextQuesLocation,null);
+        $location.url("#"+nextQuesLocation, null);
+
 
         //$location.path(nextQuesLocation);
         //$location.hash(nextQuesLocation);
@@ -97,10 +113,15 @@
         }
         */
 
+        /*
+        var nowBox = "box" + index;
+        $scope.nowBox = false;
+        */
 
-        $scope.inputText = "";　//ボックスのクリア
+        $scope.inputText = "";　//$scopeの中身をクリア
 
         //$scope.$apply();   //画面の更新(itemの更新処理はなぜか自動で行われている)
+
       }else{
         alert("文字が入力されていません。");
       }
@@ -117,4 +138,6 @@
 
       return data;
   });
+
+
 })();

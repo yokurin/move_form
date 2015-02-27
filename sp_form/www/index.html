@@ -14,6 +14,7 @@
   <script src="lib/onsen/js/angular/angular.js"></script>
   <script src="lib/onsen/js/onsenui.js"></script>
   <script src="js/jquery-1.11.2.min.js"></script>
+  <!--script src="js/footerFixed.js"></script-->
 
   <!--script src="cordova.js"></script-->
   <script src="js/app.js"></script>
@@ -104,14 +105,23 @@
           </div><!-- /.question_Box -->
 
           <!--  入力ボックス  -->
-          <center id="input-box-container">
-            <input style="width:80%;" type="text" class="text-input" placeholder="例：ぽんテスト" name="inputText" ng-model="inputText">
-            <button class="button button--outline btn-next" ng-click="postText($index)">次へ</button>
-          </center>
+          <!--center id="input-box-container"-->
+          <!--div ng-show="box{{$index}}">
+            <center id="footer" style=""-->
+            <center id="input-box-container">
+              <input style="width:80%;" type="text" class="text-input" placeholder="例：ぽんテスト" name="inputText" ng-model="inputText">
+              <button class="button btn-next" ng-click="postText($index)">次へ</button>
+            </center>
+          </div>
 
         </div><!--repeat-->
 
+        <!--div style="margin-bottom: 200px;"></div-->
+
       </div><!-- /#wrapper -->
+
+      <!--div style="margin-bottom: 200px;"></div-->
+
 
 
 
