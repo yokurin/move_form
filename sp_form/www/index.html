@@ -85,7 +85,7 @@
 
         <div ng-repeat="item in items"><!--repeat-->
 
-          <div class="question_Box">
+          <div class="question_Box" id="question{{$index}}">
             <div class="question_image"><img src="img/me.gif" alt="質問者の写真"/></div>
             <div class="arrow_question">
               {{item.question}}
@@ -94,8 +94,8 @@
           </div><!-- /.question_Box -->
 
 
-          <div class="question_Box" id="answer{{$index}}" style="display: ;">
-            <div class="answer_image"><img src="img/you.jpeg" alt="解答者の写真" /></div>
+          <div ng-show="true" class="question_Box" id="answer{{$index}}">
+            <!--div class="answer_image"><img src="img/you.jpeg" alt="解答者の写真" /></div-->
             <div class="arrow_answer">
               {{item.answer}}
               <!--{{inputText}}-->
@@ -104,9 +104,9 @@
           </div><!-- /.question_Box -->
 
           <!--  入力ボックス  -->
-          <center style="width: 100%; bottom: 15px; position: fixed;">
-            <input style="width:80%;" type="text" class="text-input" placeholder="例：テストテストテスト" name="inputText" ng-model="inputText">
-            <button class="button button--outline" ng-click="postText($index)">次へ</button>
+          <center id="input-box-container">
+            <input style="width:80%;" type="text" class="text-input" placeholder="例：ぽんテスト" name="inputText" ng-model="inputText">
+            <button class="button button--outline btn-next" ng-click="postText($index)">次へ</button>
           </center>
 
         </div><!--repeat-->

@@ -1,6 +1,20 @@
 .left {
 	text-align: left;
 }
+.displayon{
+	display: block;
+}
+.btn-next{
+	height: 35px!important;
+	vertical-align: top!important;
+}
+#input-box-container{
+	background-color: #fff;
+	width: 100%;
+	bottom: 0;
+	position: fixed;
+	height: 50px;
+}
 
 /*  ---------    line風css コピペ  ここから-----------------*/
 /*
@@ -18,15 +32,20 @@ body{
 }
 
 
-.arrow_answer,
+/*.arrow_answer,*/
 .arrow_question {
 		position: relative;
 		background: #fff;
-		border: 1px solid #c8c8c8;
+		/*border: 1px solid #c8c8c8;*/
 		border-radius: 10px;
 		width: 50%;
 		font-size: 15px;
 		padding:1%;
+}
+
+.arrow_answer {
+	float: right;
+	margin-right: 4%;
 }
 
 
@@ -35,17 +54,17 @@ body{
 .arrow_question {
 		float: left;
 }
-.arrow_answer {
+/*.arrow_answer {
 		float: right;
 		margin-right: 2%;
-}
+}*/
 
-.arrow_answer:after,
-.arrow_answer:before,
+/*.arrow_answer:after,
+.arrow_answer:before,*/
 .arrow_question:after,
 .arrow_question:before {
 		top: 45%;
-		border: solid transparent;
+	/*	border: solid transparent;*/
 		content: " ";
 		height: 0;
 		width: 0;
@@ -62,23 +81,23 @@ body{
 }
 
 
-.arrow_answer:after,
+/*.arrow_answer:after,
 .arrow_answer:before{
 		left: 100%;
-}
+}*/
 
 
-.arrow_answer:after,
+/*.arrow_answer:after,*/
 .arrow_question:after {
 		border-color: rgba(255, 255, 255, 0);
-		border-width: 8px;
-		margin-top: -8px;
+		border-width: 7px;
+		margin-top: -7px;
 }
 
 
-.arrow_answer:after{
+/*.arrow_answer:after{
 		border-left-color: #fff;
-}
+}*/
 
 
 .arrow_question:after{
@@ -87,7 +106,7 @@ body{
 }
 
 
-.arrow_answer:before,
+/*.arrow_answer:before,*/
 .arrow_question:before {
 		border-color: rgba(200, 200, 200, 0);
 		border-width: 9px;
@@ -95,9 +114,9 @@ body{
 }
 
 
-.arrow_answer:before{
-		border-left-color: #c8c8c8;
-}
+/*.arrow_answer:before{
+	border-left-color: #c8c8c8;
+}*/
 
 
 .arrow_question:before {
@@ -110,17 +129,17 @@ body{
 		width:15%;
 }
 
-
+/*
 .answer_image{
 		float: right;
 		width:15%;
-}
+}*/
 
 
-.answer_image img,
+/*.answer_image img,*/
 .question_image img{
 		border-radius: 50px;
-		width: 100%
+		width: 80%
 }
 
 
@@ -140,7 +159,4 @@ body{
 .input-text-box input{
 	display: inline;
 	width: 90%;
-}
-#answer0{
-	display:　;
 }
