@@ -5,8 +5,10 @@
 	display: block;
 }
 .btn-next{
-	height: 35px!important;
+	height: 30px!important;
 	vertical-align: top!important;
+	font-size: 15px!important;
+	padding:0 7px!important;
 }
 #input-box-container{
 	background-color: #fff;
@@ -15,6 +17,7 @@
 	position: fixed;
 	height: 50px;
 }
+
 
 /*  ---------    line風css コピペ  ここから-----------------*/
 /*
@@ -46,7 +49,7 @@ body{
 
 .arrow_answer {
 	float: right;
-	margin: 4% 4% 4% 0;
+	margin: 4%;
 }
 
 

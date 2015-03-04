@@ -104,19 +104,21 @@
 
           </div><!-- /.question_Box -->
 
-          <!--  入力ボックス  -->
-          <!--center id="input-box-container"-->
-          <!--div ng-show="box{{$index}}">
-            <center id="footer" style=""-->
-            <center id="input-box-container">
-              <input style="width:80%;" type="text" class="text-input " placeholder="例：ぽんテスト" name="inputText" ng-model="inputText" autofocus>
-              <button class="button btn-next" ng-click="postText($index)">次へ</button>
-            </center>
-          </div>
+
 
         </div><!--repeat-->
 
         <!--div style="margin-bottom: 200px;"></div-->
+
+        <!--  入力ボックス  -->
+        <!--center id="input-box-container"-->
+        <!--div ng-show="box{{$index}}">
+          <center id="footer" style=""-->
+          <center id="input-box-container">
+            <input style="width:80%;" type="text" class="text-input " placeholder="例：テストテスト" name="inputText" ng-model="inputText" autofocus>
+            <button class="button btn-next send-btn" ng-click="postText()">送信</button>
+          </center>
+        </div>
 
       </div><!-- /#wrapper -->
 

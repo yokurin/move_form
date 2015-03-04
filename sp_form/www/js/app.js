@@ -33,9 +33,10 @@
   module.controller('FormController', function($scope, $data, $location, $anchorScroll) {
 
     //add items propaty（これを行わないと動かない）
-    $scope.items = [ { question: 'お名前を教えてください' } ];
+    $scope.items = [ { question: '名前は？', answer: ''} ];
 
-    //$scope.num = 0;
+    //質問項目や回答の順番をみるためにオブジェクトで変数をセット
+    $data.num = 0;
 
     /*
     var update = function(index) {
@@ -59,43 +60,80 @@
 
     window.document.onkeydown = pushEnterKey;
     */
+    var questionValue = [];
+    var errorMsg = "";
 
 
-    $scope.postText = function(index)
+
+
+    //質問の設定
+    questionValue[$data.num] = '名前は？';
+    questionValue[$data.num+1] = '性別は？  男性は1 女性は2 を入力しろ';
+    questionValue[$data.num+2] = '出身は？';
+    questionValue[$data.num+3] = '年齢は？';
+    questionValue[$data.num+4] = '住所は？';
+    //questionValue[5] = '質問６';
+    //questionValue[6] = '質問７';
+    for(var o=5; o<10; o++) //oはループ変数
     {
-      var questionValue = [];
-      var next = index + 1;
-      questionValue[0] = 'お名前を教えてください';
-      questionValue[1] = '性別を教えてください';
-      questionValue[2] = '出身を教えてください';
-      questionValue[3] = '年齢を教えてください';
-      questionValue[4] = '住所を教えてください';
-      //questionValue[5] = '質問６';
-      //questionValue[6] = '質問７';
-      for(var o=5; o<100; o++) //oはループ変数
-      {
-        questionValue[o] = '質問'+o+'の内容';
-      }
+      questionValue[o] = '質問'+o+'の内容';
+    }
 
+    //エラーメッセージの設定
+    errorMsg = "は？もう一度！";
+
+
+
+    $scope.postText = function()
+    {
+
+      //indexの位置が質問と回答に一致するように
+      //$data.num = index;
+      var next = $data.num + 1;
+
+
+
+      //入力欄に文字が入っているとき
       if(this.inputText)
       {
         //get input box value
         var textValue = this.inputText;
-        console.log("回答"+index+":"+ textValue);
+        console.log("回答"+$data.num+":"+ textValue);
 
         //回答者と回答を表示(jQuery未動作のため未実装　【原因】jQueryとangularjsの競合？)
         //$("#answer"+index).css("backgroundColor","red");
         //$("#answer").addClass("");
         //$("#answer"+index).addClass("displayon");
 
+        //バリデーションの実行
+        if( validation($data.num, textValue) == true)
+        {
+
+          //番号に応じた質問と答えをセット
+          //$scope.items[$data.num] = ({ question: questionValue[$data.num], answer: textValue });
+          $scope.items[$data.num].answer =  textValue;
+          $scope.items.push({ question: questionValue[next] });
+
+        }else{
+
+          //エラーメッセージと質問と答えをセット
+          //$scope.items[$data.num] = ({ question: questionValue[$data.num], answer: textValue });
+          $scope.items[$data.num].answer = textValue;
+          $scope.items.push({ question: questionValue[$data.num]  });
+
+        }
+
+        /*
         //番号に応じた質問と答えをセット
         $scope.items[index] = ({ question: questionValue[index], answer: textValue });
         $scope.items.push({ question: questionValue[next] });
+        */
 
 
         //新しい質問部分に移動
         var nextQuesLocation = 'question' + next;
         $location.url("#"+nextQuesLocation, null);
+
 
 
         //$location.path(nextQuesLocation);
@@ -120,6 +158,9 @@
 
         $scope.inputText = "";　//$scopeの中身をクリア
 
+        //質問を繰り返したり、次の質問へ移動するため +1
+        $data.num = $data.num + 1;
+
         //$scope.$apply();   //画面の更新(itemの更新処理はなぜか自動で行われている)
 
       }else{
@@ -127,6 +168,48 @@
       }
 
     };
+
+    function validation(index, text)
+    {
+        //名前のバリデーション
+        if($scope.items == questionValue[$data.num])
+        {
+          if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
+          {
+            return true;
+          }
+        }
+
+        //性別のバリデーション
+        if($scope.items == questionValue[$data.num+1])
+        {
+          if( text.match(/^[0-9]+$/) )
+          {
+            return true;
+          }
+        }
+
+        //出身のバリデーション
+        if($scope.items == questionValue[$data.num+2])
+        {
+          if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
+          {
+            return true;
+          }
+        }
+
+        //年齢のバリデーション
+        if($scope.items == questionValue[$data.num+3])
+        {
+          if( text.match(/^¥d+$/) )
+          {
+            return true;
+          }
+        }
+
+
+        return false;
+    }
 
 
 
