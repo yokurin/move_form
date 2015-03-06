@@ -241,7 +241,7 @@
       //住所のバリデーション
       if( nowNumber == 4)
       {
-        if( text.match(/^[^\x01-\x7E]+[\x20-\x7E]+$/) )
+        if( text.match(/^[^\x01-\x7E]+$/) )
         {
           return true;
         }
