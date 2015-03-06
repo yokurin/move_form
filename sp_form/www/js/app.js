@@ -148,18 +148,26 @@
 
         //$scope.$apply();   //画面の更新(itemの更新処理はなぜか自動で行われている)
 
-        if( successCnt == questionValue.length)
-        {
-          postModal.show();
-          setTimeout('postModal.hide()', 1500);
-
-          setTimeout('ons.navigator.pushPage(thanks.html)', 1900);
-        }
-
         //成功した答えを全て表示
         for(var s=0; s < answerValue.length; s++)
         {
           console.log("正しい回答["+ s + "]：" + answerValue[s]);
+        }
+
+
+        //質問が最後だったときの処理
+        if( successCnt == questionValue.length)
+        {
+
+          for(var d=0; d<answerValue.length; d++)
+          {
+            $data.inputform[i] = { question: questionValue[d] , answer: answerValue[d] }
+          }
+          
+          postModal.show();
+          setTimeout('postModal.hide()', 1500);
+
+          setTimeout('ons.navigator.pushPage(confirm.html)', 1900);
         }
 
       }else{
@@ -237,6 +245,12 @@
       allCnt++;
       errorCnt++;
     }
+
+
+
+  });
+
+  module.controller('ConfirmController', function($scope, $data) {
 
 
 
