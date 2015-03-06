@@ -6,7 +6,7 @@
 
   });
 
-  module.controller('HomeController', function($scope, $data) {
+  module.controller('HomeController', function($scope, $data, $location) {
 
     //$("ons-page").css("backgroundColor","red");
     /*
@@ -21,6 +21,8 @@
     }
     */
 
+    //urlの末尾を初期化
+    $location.url("", "");
 
     //formに遷移
     $scope.go_to_form = function() {
@@ -31,15 +33,6 @@
 
 
   module.controller('FormController', function($scope, $data, $location, $anchorScroll) {
-
-    //add items propaty（これを行わないと動かない）
-    $scope.items = [ { question: '名前は？', answer: ''} ];
-
-    /*
-    var update = function(index) {
-      $('#answer'+index).css('display','');
-    };
-    */
 
     //enterkey をおされたときの処理
     /*$('').keypress( function ( e ) {
@@ -57,15 +50,13 @@
 
     window.document.onkeydown = pushEnterKey;
     */
+
     var questionValue = [];
     var errorMsg = [];
-
     //質問と回答の番号はセット（同じ）で回数を計測
     var allCnt = 0;
-
     //成功した回数
     var successCnt = 0;
-
     //失敗した回数
     var errorCnt = 0;
 
@@ -78,24 +69,29 @@
     questionValue[2] = '出身は？';
     questionValue[3] = '年齢は？';
     questionValue[4] = '住所は？';
-    //questionValue[5] = '質問６';
-    //questionValue[6] = '質問７';
-    for(var o=5; o<10; o++) //oはループ変数
+    for(var o=5; o<10; o++)
     {
       questionValue[o] = '質問'+o+'の内容';
     }
 
     //エラーメッセージの設定
     errorMsg[0] = "入力に誤りがあります。もう一度";
-    errorMsg[1] = "入力に誤りがあるようですね。しっかりしてください。";
-    errorMsg[2] = "質問にちゃんと答えましょう";
+    errorMsg[1] = "入力に誤りがあるようですね。";
+    errorMsg[2] = "質問にちゃんと答えましょう。";
+    errorMsg[3] = "しっかりしてください。";
+    errorMsg[4] = "違う。日本語わかりますか。";
+
+    //itemsにプロパティの設定
+    $scope.items = [ { question: questionValue[0], answer: ''} ];
 
 
 
     $scope.postText = function()
     {
+      //次の数字をセット
+      var successNext = successCnt + 1;
+      var allNext = allCnt + 1;
 
-      var next = successCnt + 1;
       //乱数の作成
       var random =  Math.floor( Math.random() * errorMsg.length );
       //console.log("random:"+ random);
@@ -114,13 +110,13 @@
         //$("#answer"+index).addClass("displayon");
 
         //バリデーションの実行
-        if( validation(allCnt, textValue) == true)
+        if( validation(successCnt, textValue) == true)
         {
 
           //番号に応じた質問と答えをセット
           //$scope.items[$data.num] = ({ question: questionValue[$data.num], answer: textValue });
           $scope.items[allCnt].answer =  textValue;
-          $scope.items.push({ question: questionValue[next] });
+          $scope.items.push({ question: questionValue[successNext] });
 
           //成功時に実行
           success();
@@ -136,15 +132,8 @@
         }
 
 
-        /*
-        //番号に応じた質問と答えをセット
-        $scope.items[index] = ({ question: questionValue[index], answer: textValue });
-        $scope.items.push({ question: questionValue[next] });
-        */
-
-
         //新しい質問部分に移動
-        var nextQuesLocation = 'question' + next;
+        var nextQuesLocation = 'question' + allNext;
         $location.url("#"+nextQuesLocation, null);
 
 
@@ -179,11 +168,12 @@
 
     };
 
+
     function validation(index, text)
     {
-      var nowQuestion = index - errorCnt;
+
       //名前のバリデーション
-      if( nowQuestion == 0)
+      if( index == 0)
       {
         if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
         {
@@ -192,7 +182,7 @@
       }
 
       //性別のバリデーション
-      if(nowQuestion == 1)
+      if(index == 1)
       {
         if( text.match(/^[0-9]+$/) )
         {
@@ -201,7 +191,7 @@
       }
 
       //出身のバリデーション
-      if(nowQuestion == 2)
+      if(index == 2)
       {
         if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
         {
@@ -210,9 +200,18 @@
       }
 
       //年齢のバリデーション
-      if(nowQuestion == 3)
+      if(index == 3)
       {
-        if( text.match(/^¥d+$/) )
+        if( text.match(/^[0-9]+$/) )
+        {
+          return true;
+        }
+      }
+
+      //住所のバリデーション
+      if(index == 4)
+      {
+        if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
         {
           return true;
         }
