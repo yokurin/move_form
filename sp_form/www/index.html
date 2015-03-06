@@ -76,12 +76,21 @@
 
   <ons-template id="form.html">
 
+    <ons-modal var="spamModal">
+      <ons-icon icon="thumbs-down" class="icon-large"></ons-icon>
+      <div>
+        <p>お客様はスパムの疑いがあります。</p>
+        <br />
+        <div>再度はじめから入力をお願いします。</div>
+      </div>
+    </ons-modal>
+
     <ons-modal var="postModal">
-      <ons-icon icon="spinner" spin="true" class="icon-large"></ons-icon>
+      <ons-icon icon="refresh" spin="true" class="icon-large"></ons-icon>
       <div>
         <p>ご入力ありがとうございました。</p>
         <br />
-        <div>アップロード中です。</div>
+        <div>確認中です。</div>
       </div>
     </ons-modal>
 
@@ -148,7 +157,7 @@
       </ons-toolbar>
 
       <div ng-controller="ConfirmController">
-        <div>
+        <div style="margin: 20px auto;">
           <section ng-repeat="confirm in confirms">
             <h4>{{confirm.question}}</h4>
             <p>{{confirm.answer}}</p>

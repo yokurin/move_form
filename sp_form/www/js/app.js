@@ -99,6 +99,7 @@
 
     $scope.postText = function()
     {
+
       //次の数字をセット
       var successNext = successCnt + 1;
       var allNext = allCnt + 1;
@@ -106,7 +107,6 @@
       //乱数の作成
       var random =  Math.floor( Math.random() * errorMsg.length );
       //console.log("random:"+ random);
-
 
       //入力欄に文字が入っているとき
       if(this.inputText)
@@ -175,6 +175,17 @@
             $scope.ons.navigator.pushPage('confirm.html');
           }, 1900);
 
+        }
+
+        //間違えれる回数
+        var maxErrorCnt = 5;
+        //一定回数以上間違えるとスパム扱い
+        if( errorCnt >= maxErrorCnt)
+        {
+          spamModal.show();
+          //2.5秒後にモーダル隠す
+          setTimeout('spamModal.hide()', 2500);
+          setTimeout('ons.navigator.popPage()', 2900);
         }
 
 
