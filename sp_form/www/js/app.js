@@ -69,7 +69,7 @@
     questionValue[1] = '性別を教えてください。\n\n男性は1 女性は2を入力';
     questionValue[2] = '出身を教えてください。';
     questionValue[3] = '年齢を教えてください。';
-    questionValue[4] = '住所を教えてください。\r\n全て全角で入力';
+    questionValue[4] = '住所を教えてください。';
     //questionValue[5] = '以上で終わりになります。ありがとうございました。';
     /*
     for(var o=5; o<10; o++)
@@ -94,6 +94,8 @@
     $data.confirms = [ { question: '', answer: ''} ];
     //inputの入力形式を指定
     $scope.inputType = 'text';
+    //キーボードの表示を指定
+    $scope.keyBoard = true;
 
 
 
@@ -147,6 +149,9 @@
         //質問が最後だったときの処理
         if( successCnt >= questionValue.length)
         {
+          //jQuery動いてる謎！！
+          //キーボードを隠す
+          $(".text-input").blur();
           //$dataにエラー回数をいれる
           $data.errorCnt = errorCnt;
           //post中のモーダル表示
@@ -236,7 +241,7 @@
       //住所のバリデーション
       if( nowNumber == 4)
       {
-        if( text.match(/^[^\x01-\x7E]+$/) )
+        if( text.match(/^[^\x01-\x7E]+[\x20-\x7E]+$/) )
         {
           return true;
         }
