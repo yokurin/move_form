@@ -65,13 +65,11 @@
 
 
     //質問の設定
-    questionValue[0] = '名前は？';
-    questionValue[1] = '性別は？  男性は1 女性は2 を入力';
-    /*
-    questionValue[2] = '出身は？';
-    questionValue[3] = '年齢は？';
-    questionValue[4] = '住所は？';
-    */
+    questionValue[0] = '名前を教えてください。';
+    questionValue[1] = '性別を教えてください。\n\n男性は1 女性は2を入力';
+    questionValue[2] = '出身を教えてください。';
+    questionValue[3] = '年齢を教えてください。';
+    questionValue[4] = '住所を教えてください。\r\n全て全角で入力';
     //questionValue[5] = '以上で終わりになります。ありがとうございました。';
     /*
     for(var o=5; o<10; o++)
@@ -94,6 +92,8 @@
     $scope.items = [ { question: questionValue[0], answer: ''} ];
     //dataにプロパティの設定
     $data.confirms = [ { question: '', answer: ''} ];
+    //inputの入力形式を指定
+    $scope.inputType = 'text';
 
 
 
@@ -132,39 +132,23 @@
           $data.confirms[successCnt] = { question: questionValue[successCnt] , answer: textValue };
 
           //成功時に実行
-          success();
+          success(successCnt);
         }else{
 
           //エラーメッセージと質問と答えをセット
           $scope.items[allCnt].answer = textValue;
-          $scope.items.push({ question: errorMsg[random] + "   " + questionValue[successCnt]  });
+          $scope.items.push({ question: errorMsg[random] + " \n  " + questionValue[successCnt]  });
 
           //失敗時に実行
           error();
         }
 
 
-        //新しい質問部分に移動
-        var nextQuesLocation = 'question' + allNext;
-        $location.url("#"+nextQuesLocation, null);
-
-
-        $scope.inputText = "";　//$scope.inputTextの中身をクリア
-
-        //$scope.$apply();   //画面の更新(itemの更新処理はなぜか自動で行われている)
-
-        /*
-        成功した答えを全て表示
-        for(var s=0; s < answerValue.length; s++)
-        {
-          console.log("正しい回答["+ s + "]：" + answerValue[s]);
-        }
-        */
-
-
         //質問が最後だったときの処理
-        if( successCnt == questionValue.length)
+        if( successCnt >= questionValue.length)
         {
+          //$dataにエラー回数をいれる
+          $data.errorCnt = errorCnt;
           //post中のモーダル表示
           postModal.show();
           //1.5秒後にモーダル隠す
@@ -176,6 +160,19 @@
           }, 1900);
 
         }
+
+        //新しい質問部分に移動
+        var nextQuesLocation = 'question' + allNext;
+        $location.url("#"+nextQuesLocation, null);
+
+
+        $scope.inputText = "";　//$scope.inputTextの中身をクリア
+        this.inputText = "";
+
+        //$scope.$apply();   //画面の更新(itemの更新処理はなぜか自動で行われている)
+
+
+
 
         //間違えれる回数
         var maxErrorCnt = 5;
@@ -203,7 +200,7 @@
       //名前のバリデーション
       if( nowNumber == 0)
       {
-        if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
+        if( text.match(/^[^\x01-\x7E]+$/) )
         {
           return true;
         }
@@ -221,7 +218,7 @@
       //出身のバリデーション
       if( nowNumber == 2)
       {
-        if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
+        if( text.match(/^[^\x01-\x7E]+$/) )
         {
           return true;
         }
@@ -239,7 +236,7 @@
       //住所のバリデーション
       if( nowNumber == 4)
       {
-        if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
+        if( text.match(/^[^\x01-\x7E]+$/) )
         {
           return true;
         }
@@ -251,10 +248,33 @@
 
 
     //成功時
-    function success()
+    function success(nowNumber)
     {
+
+      if(nowNumber == 0)
+      {
+        $scope.inputType = 'number';
+      }
+
+
+      if(nowNumber == 1)
+      {
+        $scope.inputType = 'text';
+      }
+
+      if(nowNumber == 2)
+      {
+        $scope.inputType = 'number';
+      }
+
+      if(nowNumber == 3)
+      {
+        $scope.inputType = 'text';
+      }
+
       allCnt++;
       successCnt++;
+
 
     }
 
@@ -273,9 +293,31 @@
   module.controller('ConfirmController', function($scope, $data) {
 
     $scope.confirms = $data.confirms;
+    $scope.errorCnt = $data.errorCnt;
 
-    console.log($scope.confirms);
 
+
+    $scope.post_Value = function()
+    {
+      //console.log(this.confirm_check);
+      //チェックされているとき
+      if(this.confirm_check == true)
+      {
+        //$.ajax
+
+        //post中のモーダル表示
+        postModalConfirm.show();
+        //1.5秒後にモーダル隠す
+        setTimeout('postModalConfirm.hide()', 1500);
+        setTimeout('ons.navigator.popPage()', 1900);
+        setTimeout('ons.navigator.popPage()', 1900);
+      }else{
+
+        alert("チェックをお願いします。");
+      }
+
+
+    }
 
 
   });

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="initial-scale=1.0" />
 
   <title>form</title>
 
@@ -103,6 +104,11 @@
 
       <div id="wrapper">
 
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div ng-repeat="item in items"><!--repeat-->
 
           <div class="question_Box" id="question{{$index}}">
@@ -128,19 +134,13 @@
         </div><!--repeat-->
 
         <br />
-        <br />
-
         <!--div style="margin-bottom: 200px;"></div-->
 
         <!--  入力ボックス  -->
-        <!--center id="input-box-container"-->
-        <!--div ng-show="box{{$index}}">
-          <center id="footer" style=""-->
-          <center id="input-box-container">
-            <input style="width:80%;" type="text" class="text-input " placeholder="例：テストテスト" name="inputText" ng-model="inputText" autofocus>
-            <button class="button btn-next send-btn" ng-click="postText()">送信</button>
-          </center>
-        </div>
+        <form align="center" id="input-box">
+          <input style="width:80%;" type="{{inputType}}" class="text-input " placeholder="例：テストテスト" name="inputText" ng-model="inputText"><!-- autofocus-->
+          <button class="button btn-next send-btn" ng-click="postText()">送信</button>
+        </form>
 
       </div><!-- /#wrapper -->
 
@@ -150,18 +150,58 @@
   </ons-template>
 
   <ons-template id="confirm.html">
+
+    <ons-modal var="postModalConfirm">
+      <ons-icon icon="refresh" spin="true" class="icon-large"></ons-icon>
+      <div>
+        <p>ご入力ありがとうございました。</p>
+        <br />
+        <div>アップロード中です。</div>
+      </div>
+    </ons-modal>
+
     <ons-page>
       <ons-toolbar>
         <div class="left"><ons-back-button>Back</ons-back-button></div>
-        <div class="center">入力確認ページ</div>
+        <div class="center">入力確認</div>
       </ons-toolbar>
 
       <div ng-controller="ConfirmController">
-        <div style="margin: 20px auto;">
-          <section ng-repeat="confirm in confirms">
+        <div id="wrapper">
+
+          <div ng-repeat="confirm in confirms" class="confirm">
             <h4>{{confirm.question}}</h4>
             <p>{{confirm.answer}}</p>
-          </section>
+          </div>
+
+          <br />
+          <br />
+
+
+          <div style="width: 83%; padding: 1% 7%;">
+
+            <div style="color: red; font-size: 13px; font-weight: bold;">
+              入力ミスした回数：&nbsp;&nbsp;
+              <span class="notification">{{errorCnt}}</span>
+            </div>
+
+            <br />
+            <br />
+
+            <div style="font-size: 15px; font-weight: bold; margin-bottom: 30%;">
+              <span>ご入力内容に誤りがなければチェック</span>
+              <label class="switch" style="float: right;">
+                <input ng-model="confirm_check" type="checkbox" class="switch__input">
+                <div class="switch__toggle"></div>
+              </label>
+            </div>
+
+            <section style="padding: 2%;">
+              <ons-button id="next" modifier="large" class="button button--outline" value="入力フォームへ" ng-click="post_Value()">アップロード</ons-button>
+            </section>
+
+          </div>
+
         </div>
       </div>
     </ons-page>
