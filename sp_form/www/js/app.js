@@ -88,11 +88,12 @@
     errorMsg[2] = "質問にちゃんと答えましょう。";
     errorMsg[3] = "しっかりしてください。";
     errorMsg[4] = "違います。日本語わかりますか。";
+    errorMsg[5] = "ちゃんと入力しましょう。";
 
     //itemsにプロパティの設定
     $scope.items = [ { question: questionValue[0], answer: ''} ];
     //dataにプロパティの設定
-    $data.confirm = [ { question: '', answer: ''} ];
+    $data.confirms = [ { question: '', answer: ''} ];
 
 
 
@@ -127,7 +128,8 @@
           $scope.items.push({ question: questionValue[successNext] });
           //成功した答えを保存
           answerValue[successCnt] = textValue;
-          $data.confirm[successCnt].answer = textValue;
+
+          $data.confirms[successCnt] = { question: questionValue[successCnt] , answer: textValue };
 
           //成功時に実行
           success();
@@ -159,15 +161,20 @@
         }
         */
 
+
         //質問が最後だったときの処理
         if( successCnt == questionValue.length)
         {
-          //$data.confirm.question = questionValue;
-          //postModal.show();
-          //setTimeout('postModal.hide()', 1500);
+          //post中のモーダル表示
+          postModal.show();
+          //1.5秒後にモーダル隠す
+          setTimeout('postModal.hide()', 1500);
           //setTimeout('ons.navigator.popPage()', 1900);
-          //setTimeout('ons.navigator.pushPage(confirm.html)', 1900);
-          $scope.ons.navigator.pushPage('confirm.html');
+          //setTimeout(ons.navigator.pushPage('confirm.html'), 1900);
+          setTimeout(function(){
+            $scope.ons.navigator.pushPage('confirm.html');
+          }, 1900);
+
         }
 
 
@@ -254,7 +261,9 @@
 
   module.controller('ConfirmController', function($scope, $data) {
 
-    $scope.inputValues = $data.inputform;
+    $scope.confirms = $data.confirms;
+
+    console.log($scope.confirms);
 
 
 
