@@ -35,9 +35,6 @@
     //add items propaty（これを行わないと動かない）
     $scope.items = [ { question: '名前は？', answer: ''} ];
 
-    //質問項目や回答の順番をみるためにオブジェクトで変数をセット
-    $data.num = 0;
-
     /*
     var update = function(index) {
       $('#answer'+index).css('display','');
@@ -61,17 +58,26 @@
     window.document.onkeydown = pushEnterKey;
     */
     var questionValue = [];
-    var errorMsg = "";
+    var errorMsg = [];
+
+    //質問と回答の番号はセット（同じ）で回数を計測
+    var allCnt = 0;
+
+    //成功した回数
+    var successCnt = 0;
+
+    //失敗した回数
+    var errorCnt = 0;
 
 
 
 
     //質問の設定
-    questionValue[$data.num] = '名前は？';
-    questionValue[$data.num+1] = '性別は？  男性は1 女性は2 を入力しろ';
-    questionValue[$data.num+2] = '出身は？';
-    questionValue[$data.num+3] = '年齢は？';
-    questionValue[$data.num+4] = '住所は？';
+    questionValue[0] = '名前は？';
+    questionValue[1] = '性別は？  男性は1 女性は2 を入力';
+    questionValue[2] = '出身は？';
+    questionValue[3] = '年齢は？';
+    questionValue[4] = '住所は？';
     //questionValue[5] = '質問６';
     //questionValue[6] = '質問７';
     for(var o=5; o<10; o++) //oはループ変数
@@ -80,17 +86,19 @@
     }
 
     //エラーメッセージの設定
-    errorMsg = "は？もう一度！";
+    errorMsg[0] = "入力に誤りがあります。もう一度";
+    errorMsg[1] = "入力に誤りがあるようですね。しっかりしてください。";
+    errorMsg[2] = "質問にちゃんと答えましょう";
 
 
 
     $scope.postText = function()
     {
 
-      //indexの位置が質問と回答に一致するように
-      //$data.num = index;
-      var next = $data.num + 1;
-
+      var next = successCnt + 1;
+      //乱数の作成
+      var random =  Math.floor( Math.random() * errorMsg.length );
+      //console.log("random:"+ random);
 
 
       //入力欄に文字が入っているとき
@@ -98,7 +106,7 @@
       {
         //get input box value
         var textValue = this.inputText;
-        console.log("回答"+$data.num+":"+ textValue);
+        console.log("回答"+ allCnt +":"+ textValue);
 
         //回答者と回答を表示(jQuery未動作のため未実装　【原因】jQueryとangularjsの競合？)
         //$("#answer"+index).css("backgroundColor","red");
@@ -106,22 +114,27 @@
         //$("#answer"+index).addClass("displayon");
 
         //バリデーションの実行
-        if( validation($data.num, textValue) == true)
+        if( validation(allCnt, textValue) == true)
         {
 
           //番号に応じた質問と答えをセット
           //$scope.items[$data.num] = ({ question: questionValue[$data.num], answer: textValue });
-          $scope.items[$data.num].answer =  textValue;
+          $scope.items[allCnt].answer =  textValue;
           $scope.items.push({ question: questionValue[next] });
 
+          //成功時に実行
+          success();
         }else{
 
           //エラーメッセージと質問と答えをセット
           //$scope.items[$data.num] = ({ question: questionValue[$data.num], answer: textValue });
-          $scope.items[$data.num].answer = textValue;
-          $scope.items.push({ question: questionValue[$data.num]  });
+          $scope.items[allCnt].answer = textValue;
+          $scope.items.push({ question: errorMsg[random] + "   " + questionValue[successCnt]  });
 
+          //失敗時に実行
+          error();
         }
+
 
         /*
         //番号に応じた質問と答えをセット
@@ -156,10 +169,7 @@
         $scope.nowBox = false;
         */
 
-        $scope.inputText = "";　//$scopeの中身をクリア
-
-        //質問を繰り返したり、次の質問へ移動するため +1
-        $data.num = $data.num + 1;
+        $scope.inputText = "";　//$scope.inputTextの中身をクリア
 
         //$scope.$apply();   //画面の更新(itemの更新処理はなぜか自動で行われている)
 
@@ -171,44 +181,61 @@
 
     function validation(index, text)
     {
-        //名前のバリデーション
-        if($scope.items == questionValue[$data.num])
+      var nowQuestion = index - errorCnt;
+      //名前のバリデーション
+      if( nowQuestion == 0)
+      {
+        if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
         {
-          if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
-          {
-            return true;
-          }
+          return true;
         }
+      }
 
-        //性別のバリデーション
-        if($scope.items == questionValue[$data.num+1])
+      //性別のバリデーション
+      if(nowQuestion == 1)
+      {
+        if( text.match(/^[0-9]+$/) )
         {
-          if( text.match(/^[0-9]+$/) )
-          {
-            return true;
-          }
+          return true;
         }
+      }
 
-        //出身のバリデーション
-        if($scope.items == questionValue[$data.num+2])
+      //出身のバリデーション
+      if(nowQuestion == 2)
+      {
+        if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
         {
-          if( text.match(/^[亜-熙ぁ-んァ-ン]+$/) )
-          {
-            return true;
-          }
+          return true;
         }
+      }
 
-        //年齢のバリデーション
-        if($scope.items == questionValue[$data.num+3])
+      //年齢のバリデーション
+      if(nowQuestion == 3)
+      {
+        if( text.match(/^¥d+$/) )
         {
-          if( text.match(/^¥d+$/) )
-          {
-            return true;
-          }
+          return true;
         }
+      }
 
 
-        return false;
+      return false;
+    }
+
+
+    //成功時
+    function success()
+    {
+      allCnt++;
+      successCnt++;
+    }
+
+
+    //失敗時
+    function error()
+    {
+      allCnt++;
+      errorCnt++;
     }
 
 
