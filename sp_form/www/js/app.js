@@ -91,6 +91,8 @@
 
     //itemsにプロパティの設定
     $scope.items = [ { question: questionValue[0], answer: ''} ];
+    //dataにプロパティの設定
+    $data.confirm = [ { question: '', answer: ''} ];
 
 
 
@@ -125,6 +127,7 @@
           $scope.items.push({ question: questionValue[successNext] });
           //成功した答えを保存
           answerValue[successCnt] = textValue;
+          $data.confirm[successCnt].answer = textValue;
 
           //成功時に実行
           success();
@@ -148,31 +151,30 @@
 
         //$scope.$apply();   //画面の更新(itemの更新処理はなぜか自動で行われている)
 
-        //成功した答えを全て表示
+        /*
+        成功した答えを全て表示
         for(var s=0; s < answerValue.length; s++)
         {
           console.log("正しい回答["+ s + "]：" + answerValue[s]);
         }
-
+        */
 
         //質問が最後だったときの処理
         if( successCnt == questionValue.length)
         {
-
-          for(var d=0; d<answerValue.length; d++)
-          {
-            $data.inputform[i] = { question: questionValue[d] , answer: answerValue[d] }
-          }
-          
-          postModal.show();
-          setTimeout('postModal.hide()', 1500);
-
-          setTimeout('ons.navigator.pushPage(confirm.html)', 1900);
+          //$data.confirm.question = questionValue;
+          //postModal.show();
+          //setTimeout('postModal.hide()', 1500);
+          //setTimeout('ons.navigator.popPage()', 1900);
+          //setTimeout('ons.navigator.pushPage(confirm.html)', 1900);
+          $scope.ons.navigator.pushPage('confirm.html');
         }
+
 
       }else{
         alert("文字が入力されていません。");
       }
+
 
     };
 
@@ -251,6 +253,8 @@
   });
 
   module.controller('ConfirmController', function($scope, $data) {
+
+    $scope.inputValues = $data.inputform;
 
 
 

@@ -148,9 +148,9 @@
 
       <div ng-controller="ConfirmController">
         <div>
-          <section ng-repeat="inputValue in inputValues">
-            <h4></h4>
-            <
+          <section ng-repeat="confirm in confirms">
+            <h4>{{confirm.question}}</h4>
+            <p>{{confirm.answer}}</p>
           </section>
         </div>
       </div>
