@@ -137,7 +137,7 @@
 
           //エラーメッセージと質問と答えをセット
           $scope.items[allCnt].answer = textValue;
-          $scope.items.push({ question: errorMsg[random] + " \n  " + questionValue[successCnt]  });
+          $scope.items.push({ question: errorMsg[random] + " \n\n  " + questionValue[successCnt]  });
 
           //失敗時に実行
           error();
