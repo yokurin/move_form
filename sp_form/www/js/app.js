@@ -104,17 +104,15 @@
         var textValue = this.inputText;
         console.log("回答"+ allCnt +":"+ textValue);
 
-        //回答者と回答を表示(jQuery未動作のため未実装　【原因】jQueryとangularjsの競合？)
-        //$("#answer"+index).css("backgroundColor","red");
-        //$("#answer").addClass("");
-        //$("#answer"+index).addClass("displayon");
+        //回答者と回答を表示
+        //(jQuery未動作のため未実装　【原因】jQueryとangularjsの競合？)
+
 
         //バリデーションの実行
         if( validation(successCnt, textValue) == true)
         {
 
           //番号に応じた質問と答えをセット
-          //$scope.items[$data.num] = ({ question: questionValue[$data.num], answer: textValue });
           $scope.items[allCnt].answer =  textValue;
           $scope.items.push({ question: questionValue[successNext] });
 
@@ -123,7 +121,6 @@
         }else{
 
           //エラーメッセージと質問と答えをセット
-          //$scope.items[$data.num] = ({ question: questionValue[$data.num], answer: textValue });
           $scope.items[allCnt].answer = textValue;
           $scope.items.push({ question: errorMsg[random] + "   " + questionValue[successCnt]  });
 
@@ -136,27 +133,6 @@
         var nextQuesLocation = 'question' + allNext;
         $location.url("#"+nextQuesLocation, null);
 
-
-
-        //$location.path(nextQuesLocation);
-        //$location.hash(nextQuesLocation);
-        //$anchorScroll.yOffset = 100;
-        //var locUrl = "file:///Users/hayashi/Documents/develop/move_form/sp_form/www/index.html#"+nextQuesLocation;
-        //$location.absUrl() == locUrl
-        //$location.path() == nextQuesLocation
-        /*
-        if($location.hash() != nextQuesLocation)
-        {
-          $location.hash('answer' + next);
-        }else{
-          $anchorScroll.yOffset = 50;
-        }
-        */
-
-        /*
-        var nowBox = "box" + index;
-        $scope.nowBox = false;
-        */
 
         $scope.inputText = "";　//$scope.inputTextの中身をクリア
 
