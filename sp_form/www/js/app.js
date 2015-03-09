@@ -32,7 +32,7 @@
   });
 
 
-  module.controller('FormController', function($scope, $data, $location, $anchorScroll) {
+  module.controller('FormController', function($scope, $data, $location, $anchorScroll, $http) {
 
     //enterkey をおされたときの処理
     /*$('').keypress( function ( e ) {
@@ -121,8 +121,10 @@
         //(jQuery未動作のため未実装　【原因】jQueryとangularjsの競合？)
 
 
-        //バリデーションの実行
-        if( validation(successCnt, textValue) == true)
+        //ajaxでpostしてバリデーションの実行
+        //if( validation(successCnt, textValue) == true)
+        console.log( postValidation(textValue, successCnt) );
+        if( postValidation(textValue, successCnt) == true )
         {
 
           //番号に応じた質問と答えをセット
@@ -198,7 +200,23 @@
 
     };
 
+    //入力された内容をajaxでバリデーション
+    function postValidation(string, successCnt)
+    {
+      $http.post("http://localhost/regist/likeLINEValidation", { string: string, successCnt: successCnt })
+      .success(function(data) {
+          console.log
+          return data;
+      })
+      .error(function(data, status) {
+          console.log(status);
+          return data;
+      });
+
+    }
+
     //バリデーション
+    /*
     function validation(nowNumber, text)
     {
 
@@ -250,6 +268,8 @@
 
       return false;
     }
+    */
+
 
 
     //成功時
@@ -294,6 +314,20 @@
 
 
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   module.controller('ConfirmController', function($scope, $data) {
 
